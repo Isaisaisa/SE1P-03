@@ -1,6 +1,9 @@
 package Services;
 
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.sql.*;
+import java.util.Properties;
 
 /**
  * Created by Louisa on 03.11.2014.
@@ -10,7 +13,7 @@ public class PersistenceServiceImpl implements PersistenceService{
     private Connection connection;
     private boolean			 	isDriverInitialized;
 
-    private String				dbURL = "jdbc:oracle:thin:@oracle.informatik.haw-hamburg.de:1521:inf09";
+    private String				dbURL;
     private String  			user;
     private String 				pass;
 
@@ -29,6 +32,35 @@ public class PersistenceServiceImpl implements PersistenceService{
 
     public void setUser(String user) {
         this.user = user;
+    }
+
+    public String getDbURL() {
+        return dbURL;
+    }
+
+    public void setDbURL(String dbURL) {
+        this.dbURL = dbURL;
+    }
+
+    /**
+     * read the config file
+     */
+    public void readFile(){
+        Properties props = new Properties();
+        FileInputStream in;
+        try {
+            in =  new FileInputStream("config.properties");
+            props.load(in);
+            in.close();
+            System.out.print("jap es klappt");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+       setUser(props.getProperty("User"));
+       setPass(props.getProperty("Pwd"));
+       setDbURL(props.getProperty("dbURL"));
+
     }
 
 
@@ -61,6 +93,8 @@ public class PersistenceServiceImpl implements PersistenceService{
 
         // Datenkonsistenz prüfen
         try {
+            System.out.println(getDbURL());
+            System.out.println(getUser());
             connection = (DriverManager.getConnection(dbURL, user, pass));
         } catch (SQLException e) {
             e.printStackTrace();

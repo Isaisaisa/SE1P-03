@@ -13,6 +13,7 @@ public class main {
 
     public static void main(String[] args) {
 
+
         PersistenceService persistenceService = new PersistenceServiceImpl();
         KModulService modul = new KModulServiceImpl(persistenceService);
         KFragestellungService fragestellung = new KFragestellungServiceImpl(persistenceService, modul);
@@ -20,6 +21,7 @@ public class main {
         KFragebearbeitungService fragebearbeitung = new KFragebearbeitungServiceImpl(persistenceService, fragestellung, modul);
         KBenutzerService benutzer = new KBenutzerServiceImpl(persistenceService, modul, fragestellung, forum, fragebearbeitung);
 
+        persistenceService.readFile();
     }
 
 }
