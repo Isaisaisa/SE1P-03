@@ -3,3 +3,4 @@ out
 *.iml
 *.class
 /KBenutzer/target/
+/SE1P-03/config.properties
