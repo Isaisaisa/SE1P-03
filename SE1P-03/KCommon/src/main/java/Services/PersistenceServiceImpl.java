@@ -3,6 +3,8 @@ package Services;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
 /**
@@ -11,11 +13,11 @@ import java.util.Properties;
 public class PersistenceServiceImpl implements PersistenceService{
 
     private Connection connection;
-    private boolean			 	isDriverInitialized;
+    private boolean isDriverInitialized;
 
-    private String				dbURL;
-    private String  			user;
-    private String 				pass;
+    private String	dbURL;
+    private String  user;
+    private String 	pass;
 
 
     public String getPass() {
@@ -43,7 +45,8 @@ public class PersistenceServiceImpl implements PersistenceService{
     }
 
     /**
-     * read the config file
+     * read the config file and writes the data
+     * in parameter dbURL, user and pass
      */
     public void readFile(){
         Properties props = new Properties();
@@ -52,7 +55,7 @@ public class PersistenceServiceImpl implements PersistenceService{
             in =  new FileInputStream("config.properties");
             props.load(in);
             in.close();
-            System.out.print("jap es klappt");
+            System.out.print("\njap es klappt\n");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -63,16 +66,23 @@ public class PersistenceServiceImpl implements PersistenceService{
 
     }
 
+    private Connection connection() throws SQLException {
+        if (connection != null && connection.isClosed()) {
+            return connection;
+        } else {
+            return connection;
+        }
+    }
 
     private void connection(Connection connection) {
         this.connection = connection;
         System.out.println("Connection to database");
     }
 
-
     private void initDriver() throws ClassNotFoundException {
         try {
-            Class.forName("oracle.jdbc.driver.OracleDriver");
+            Class.forName("oracle.jdbc.OracleDriver");
+//            Class.forName ("com.mysql.jdbc.Driver");
             isDriverInitialized = true;
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
@@ -81,8 +91,6 @@ public class PersistenceServiceImpl implements PersistenceService{
     }
 
     public void connect() throws Exception {
-        // Sicherstellen, dass Datenbanktreiber initialisiert wurde
-        // (falls nicht => nachträglich initialisieren)
         if (!isDriverInitialized) {
             try {
                 initDriver();
@@ -91,11 +99,15 @@ public class PersistenceServiceImpl implements PersistenceService{
             }
         }
 
-        // Datenkonsistenz prüfen
+
         try {
             System.out.println(getDbURL());
             System.out.println(getUser());
-            connection = (DriverManager.getConnection(dbURL, user, pass));
+            //Connection mit Oracle
+            connection = (DriverManager.getConnection(getDbURL(), getUser(), getPass()));
+            //Connection mit MySql
+            //connection = (DriverManager.getConnection("jdbc:mysql://localhost/bla?"
+            //        + "user=" + getUser() + "&password=" + getPass()));
         } catch (SQLException e) {
             e.printStackTrace();
             throw e;
@@ -108,4 +120,108 @@ public class PersistenceServiceImpl implements PersistenceService{
             connection.close();
         }
     }
+
+
+
+//---------Database sendQuery--------------------------------------------------------
+
+    public String getSingleValue(ResultSet rs) throws SQLException {
+        String result = getList(rs).get(0);
+        try {
+            rs.getStatement().close(); // Automatisches Schließen des Statements nach Verarbeitung des ResultSets erwirken
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("DbWrapper#getSingleValue(ResultSet rs): Statement konnte nicht geschlossen werden.");
+            throw e;
+        }
+        return result;
+    }
+
+    public String getSingleValue(PreparedStatement ps) throws SQLException {
+        return getSingleValue( sendQuery(ps) );
+    }
+
+
+    public String getSingleValue(String query) throws SQLException {
+        return getSingleValue( sendQuery(query) );
+    }
+
+    public List<String> getListOfQuery(String query) throws Exception {
+        ResultSet resultSet = sendQuery(query);
+        List<String> resultList = getList(resultSet);
+        resultSet.getStatement().close();
+        return resultList;
+    }
+
+
+    // kompakter Accessor, der sich der ersten Spalte bedient
+    public List<String> getList(ResultSet resultSet) {
+        return getList(resultSet, 1);
+    }
+
+    // bedient sich der <column>. Spalte des Resultsets und fügt sie der resultList hinzu
+    public List<String> getList(ResultSet resultSet, int column) {
+        List<String> resultList = new ArrayList<String>();
+
+        try {
+            while (resultSet.next()) {
+                try {
+                    resultList.add(resultSet.getString(column));
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return resultList;
+    }
+
+
+//---------Database operations--------------------------------------------------------
+
+    public ResultSet sendQuery(String query) throws SQLException {
+        try {
+            Statement statement = connection().createStatement();
+            return statement.executeQuery(query);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    public ResultSet sendQuery(PreparedStatement prepStatement) throws SQLException {
+        try {
+            return prepStatement.executeQuery();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    public void sendUpdate(String query) throws SQLException {
+        try {
+            connection().createStatement().executeUpdate(query);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    public void sendUpdate(PreparedStatement prepStatement) throws SQLException {
+        try {
+            prepStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+
+
+
+
+
+
 }
