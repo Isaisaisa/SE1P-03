@@ -5,4 +5,8 @@ package Entities;
  */
 public class SingleChoiceFrage extends Fragenart {
 
+    @Override
+    public int getFragenart() {
+        return 0;
+    }
 }
