@@ -62,7 +62,7 @@ CREATE TABLE frage (
      -- 4 = Graphisch
      fragenart            INTEGER       NOT NULL,      
      -- Y/N as options
-     is_valid             CHAR(1)       NOT NULL,  --TODO: Constraint bzgl Einschränkung auf Y/N?
+     is_valid             CHAR(1)       NOT NULL,  --TODO: Constraint bzgl Einschränkung auf Y/N? + UMBENENNEN auf is_available
      --Fremdschluessel
      modul_id             INTEGER       NOT NULL,
      benutzer_create      INTEGER       NOT NULL,
