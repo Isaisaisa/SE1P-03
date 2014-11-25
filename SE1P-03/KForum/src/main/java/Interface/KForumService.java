@@ -12,7 +12,7 @@ public interface KForumService {
      * @param question (Document)
      * @return true if it was added without problems otherwise false
      */
-    public boolean addQuestion(Document question);
+    public boolean addQuestion(String question);
 
     /**
      * deactivates a question in Forum

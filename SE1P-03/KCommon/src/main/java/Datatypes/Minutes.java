@@ -25,7 +25,7 @@ public class Minutes {
         }
     }
 
-    public Minutes valueOf(int minutes) {
+    public static Minutes valueOf(int minutes) {
         return new Minutes(minutes);
     }
 

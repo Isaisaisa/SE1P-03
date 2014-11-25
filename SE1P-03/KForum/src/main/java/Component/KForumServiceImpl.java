@@ -16,7 +16,7 @@ public class KForumServiceImpl implements KForumService {
     }
 
     @Override
-    public boolean addQuestion(Document question) {
+    public boolean addQuestion(String question) {
         return false;
     }
 

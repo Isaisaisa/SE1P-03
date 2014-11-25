@@ -6,19 +6,35 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
+import java.util.Vector;
 
 /**
  * Created by Louisa on 03.11.2014.
  */
 public class PersistenceServiceImpl implements PersistenceService{
 
+    //private PersistenceServiceImpl database;
     private Connection connection;
     private boolean isDriverInitialized;
+    private static PersistenceServiceImpl instance;
 
     private String	dbURL;
     private String  user;
     private String 	pass;
 
+    //Constructor
+    private PersistenceServiceImpl(){}
+
+    //public PersistenceService database(){
+    //    return this;
+    //}
+
+    public static PersistenceServiceImpl getInstance() throws Exception {
+        if (instance == null) {
+            instance = new PersistenceServiceImpl();
+        }
+        return instance;
+    }
 
     public String getPass() {
         return pass;
@@ -67,9 +83,14 @@ public class PersistenceServiceImpl implements PersistenceService{
     }
 
     private Connection connection() throws SQLException {
-        if (connection != null && connection.isClosed()) {
+        if (connection != null && !connection.isClosed()) {
             return connection;
         } else {
+            try {
+                connect();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             return connection;
         }
     }
@@ -98,7 +119,7 @@ public class PersistenceServiceImpl implements PersistenceService{
                 e.printStackTrace();
             }
         }
-
+        this.readFile();
 
         try {
             System.out.println(getDbURL());
@@ -141,9 +162,26 @@ public class PersistenceServiceImpl implements PersistenceService{
         return getSingleValue( sendQuery(ps) );
     }
 
-
     public String getSingleValue(String query) throws SQLException {
         return getSingleValue( sendQuery(query) );
+    }
+
+    public Vector<Vector<String>> getResultVector(ResultSet resultSet) throws SQLException {
+        Vector<Vector<String>> result = new Vector<Vector<String>>();
+
+        ResultSetMetaData metaData = resultSet.getMetaData();
+        int columns = metaData.getColumnCount();
+
+        // Zeileninhalt ermitteln
+        while (resultSet.next()) {
+            Vector<String> row = new Vector<String>(columns);
+            for (int i = 1; i <= columns; i++) {
+                row.addElement(resultSet.getString(i));
+            }
+            result.addElement(row);
+        }
+
+        return result;
     }
 
     public List<String> getListOfQuery(String query) throws Exception {
@@ -181,9 +219,18 @@ public class PersistenceServiceImpl implements PersistenceService{
 
 //---------Database operations--------------------------------------------------------
 
+    @Override
+    public boolean hasResults(Vector<?> resultVector) throws SQLException {
+        return resultVector.size() > 0;
+    }
+
     public ResultSet sendQuery(String query) throws SQLException {
         try {
+            if (connection() == null) {
+                throw new SQLException("Keine Verbindung zur Datenbank vorhanden");
+            }
             Statement statement = connection().createStatement();
+            //connection().close();
             return statement.executeQuery(query);
         } catch (SQLException e) {
             e.printStackTrace();

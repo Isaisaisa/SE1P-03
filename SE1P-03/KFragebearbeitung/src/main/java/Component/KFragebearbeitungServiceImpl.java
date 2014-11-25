@@ -14,8 +14,15 @@ import java.util.List;
  */
 public class KFragebearbeitungServiceImpl implements KFragebearbeitungService {
 
-    public KFragebearbeitungServiceImpl(PersistenceService persistenceService, KFragestellungService fragestellung, KModulService modul) {
+    //Attributs
+    private PersistenceService persistenceService;
+    private KFragestellungService fragestellung;
+    private KModulService modul;
 
+    public KFragebearbeitungServiceImpl(PersistenceService persistenceService, KFragestellungService fragestellung, KModulService modul) {
+        this.persistenceService = persistenceService;
+        this.fragestellung = fragestellung;
+        this.modul = modul;
     }
 
     @Override

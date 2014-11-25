@@ -11,8 +11,8 @@ public class Frage {
     private Fragenart fragenart;
     private int frageNummer;
     private Minutes loesungszeit;
-    private Document fragestellung;
-    private Document musterloesung;
+    private String fragestellung;
+    private String musterloesung;
     private Boolean isAvailable;
 
 
@@ -29,19 +29,19 @@ public class Frage {
         return loesungszeit;
     }
 
-    public Document getFragestellung() {
+    public String getFragestellung() {
         return fragestellung;
     }
 
-    public void setFragestellung(Document fragestellung) {
+    public void setFragestellung(String fragestellung) {
         this.fragestellung = fragestellung;
     }
 
-    public Document getMusterloesung() {
+    public String getMusterloesung() {
         return musterloesung;
     }
 
-    public void setMusterloesung(Document musterloesung) {
+    public void setMusterloesung(String musterloesung) {
         this.musterloesung = musterloesung;
     }
 
@@ -54,7 +54,7 @@ public class Frage {
     }
 
     //Constructor
-    private Frage(int frageNummer, Minutes loesungszeit, Document fragestellung, Document musterloesung, Fragenart fragenart) {
+    public Frage(int frageNummer, Minutes loesungszeit, String fragestellung, String musterloesung, Fragenart fragenart) {
         this.frageNummer = frageNummer;
         this.loesungszeit = loesungszeit;
         this.fragestellung = fragestellung;
@@ -64,7 +64,7 @@ public class Frage {
     }
 
     //TODO: Fragenummer darf nicht von jedem änderbar sein... sollte automatisch generieren ~> via DB geregelt später?
-    public Frage valueOf(int frageNummer, Minutes loesungszeit, Document fragestellung, Document musterloesung, Fragenart fragenart){
+    public static Frage valueOf(int frageNummer, Minutes loesungszeit, String fragestellung, String musterloesung, Fragenart fragenart){
         return new Frage(frageNummer, loesungszeit, fragestellung, musterloesung, fragenart);
     }
 

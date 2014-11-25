@@ -3,6 +3,8 @@ package Component;
 import Entities.*;
 import Interface.KFragestellungService;
 import Interface.KModulService;
+import Repositories.FrageRepository;
+import Repositories.FrageRepositoryImpl;
 import Services.PersistenceService;
 
 import javax.swing.text.Document;
@@ -26,7 +28,8 @@ public class KFragestellungServiceImpl implements KFragestellungService {
 
     @Override
     public List<Frage> getRandomQuestion(Modul modul) {
-        return null;
+        FrageRepository repo = new FrageRepositoryImpl();
+        return repo.getRandomQuestion(modul);
     }
 
     @Override
