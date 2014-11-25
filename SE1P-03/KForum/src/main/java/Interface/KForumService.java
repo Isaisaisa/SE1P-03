@@ -9,7 +9,7 @@ public interface KForumService {
 
     /**
      * add the passed question to the Forum
-     * @param question (Document)
+     * @param question
      * @return true if it was added without problems otherwise false
      */
     public boolean addQuestion(String question);

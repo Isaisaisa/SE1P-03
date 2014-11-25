@@ -13,9 +13,10 @@ public interface KModulService {
 
     /**
      * shows all Moduls of a unser, who is authorized by its email
-     * @param email (EmailTyp)
+     * @param benutzerNummer: Die Identitätsnummer eines Benutzers,
+     *                      der aktuell aktiv ist.
      * @return List<KModulService>
      * @pre valid email-adresse
      */
-    public List<Modul> showModuls(EmailTyp email);
+    public List<IModul> getModule(int benutzerNummer);
 }

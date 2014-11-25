@@ -2,6 +2,7 @@ package Component;
 
 import Datatypes.EmailTyp;
 import Entities.Modul;
+import Interface.IModul;
 import Interface.KModulService;
 import Services.PersistenceService;
 
@@ -19,7 +20,7 @@ public class KModulServiceImpl implements KModulService {
     }
 
     @Override
-    public List<Modul> showModuls(EmailTyp email) {
+    public List<IModul> getModule(int benutzerNummer) {
         return null;
     }
 }

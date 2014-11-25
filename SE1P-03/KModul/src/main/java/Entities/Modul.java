@@ -1,9 +1,11 @@
 package Entities;
 
+import Interface.IModul;
+
 /**
  * Created by KamikazeOnRoad on 03.11.2014.
  */
-public class Modul {
+public class Modul implements IModul {
     // Declaration
     private String name;
     private String department;
