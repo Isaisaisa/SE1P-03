@@ -1,9 +1,11 @@
 package Entities;
 
 import Datatypes.ProcentType;
+import Interface.Frage;
 import Interface.Uebung;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by Louisa on 02.11.2014.
@@ -13,6 +15,7 @@ public class UebungImpl implements Uebung{
     private Date uebungsbeginn;
     private Date uebungsende;
     private ProcentType korrektheit;
+    private List<Frage> fragen;
 
     // getter and setter
     public Date getUebungsbeginn() {
@@ -50,19 +53,19 @@ public class UebungImpl implements Uebung{
 
     }
 
-    private UebungImpl(Date uebungsbeginn, Date uebungsende, ProcentType korrektheit){
+    private UebungImpl(Date uebungsbeginn, Date uebungsende, ProcentType korrektheit, List<Frage> fragen){
         setUebungsbeginn(uebungsbeginn);
         setUebungsende(uebungsende);
         setKorrektheit(korrektheit);
+        this.fragen = fragen;
     }
 
     public static UebungImpl valueOf() {
         return new UebungImpl();
     }
 
-    public static UebungImpl valueOf(Date uebungsbeginn, Date uebungsende, ProcentType korrektheit){
-        return new UebungImpl(uebungsbeginn, uebungsende, korrektheit);
+    public static UebungImpl valueOf(Date uebungsbeginn, Date uebungsende, ProcentType korrektheit, List<Frage> fragen){
+        return new UebungImpl(uebungsbeginn, uebungsende, korrektheit, fragen);
     }
 
-    //TODO: IMPORTANT: while generating PruefungImpl/ UebungImpl we need to check if the questions are available!!!
 }

@@ -10,6 +10,5 @@ import java.util.List;
  */
 public interface FrageRepository {
 
-    public List<FrageImpl> getRandomQuestion(ModulImpl modul);
 
 }

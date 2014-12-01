@@ -2,9 +2,10 @@ package Entities;
 
 
 import Datatypes.Minutes;
+import Interface.Frage;
 
 
-public class FrageImpl {
+public class FrageImpl implements Frage {
 
     //Attrubutes
     private Fragenart fragenart;

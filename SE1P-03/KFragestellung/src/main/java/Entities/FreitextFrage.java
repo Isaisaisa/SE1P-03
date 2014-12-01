@@ -5,8 +5,16 @@ package Entities;
  */
 public class FreitextFrage extends Fragenart {
 
+    private FreitextFrage(){
+        getFragenart();
+    }
+
+    public static FreitextFrage valueOf(){
+        return new FreitextFrage();
+    }
+
     @Override
-    public int getFragenart() {
+    public  int getFragenart() {
         return 3;
     }
 }

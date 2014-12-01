@@ -7,29 +7,25 @@ public interface KFragebearbeitungService {
 
     /**
      * generates a Task of question from KFragestellungService
-     * @param modul (KModulService)
-     * @return a List with Elements from KFragestellungService
-     * C the passed parameter modul exists
+     * @param modul: an existing Modul from KModul
+     * @return an Uebung with question from KFragestellungService
+     * @pre the passed parameter modul exists
      */
-//    public List<FrageImpl> generateTask(KModulService modul);
+    public Uebung generateUebung(Modul modul);
 
-    /**
-     * gets a integer number of all correct answered question
-     * @return integer number between minimum 0 and maximum "number of question in task"
-     */
-//    public int getAllCorrectAnswer();
-
-    /**
-     * gets a integer number of all incorrect answered question
-     * @return integer number between minimum 0 and maximum "number of question in task"
-     */
-//    public int getAllInCorrectAnswer();
 
     /**
      * saves the results of the task.
      * The number of right and wrong questions are saved with integers.
      * @param uebung
      */
-//    public void save(UebungImpl uebung);
+    public void saveUebung(Uebung uebung);
+
+
+    /**
+     * switch to the next question.
+     * @return the next question. If no next question return null.
+     */
+    public Frage nextFrage();
 
 }

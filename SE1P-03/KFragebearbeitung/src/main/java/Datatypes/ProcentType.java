@@ -26,7 +26,7 @@ public class ProcentType{
         }
     }
 
-    public ProcentType valueOf(int procent){
+    public static ProcentType valueOf(int procent){
         return new ProcentType(procent);
     }
 
