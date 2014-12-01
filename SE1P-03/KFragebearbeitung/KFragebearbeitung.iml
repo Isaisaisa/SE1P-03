@@ -15,6 +15,6 @@
     <orderEntry type="module" module-name="KFragestellung" />
     <orderEntry type="module" module-name="KModul" />
     <orderEntry type="module" module-name="KCommon" />
+    <orderEntry type="module" module-name="KBenutzer" />
   </component>
 </module>
-

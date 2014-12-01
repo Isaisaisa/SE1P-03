@@ -19,7 +19,7 @@ public interface KFragebearbeitungService {
      * The number of right and wrong questions are saved with integers.
      * @param uebung
      */
-    public void saveUebung(Uebung uebung);
+    public void saveUebung(Uebung uebung, Benutzer benutzer);
 
 
     /**

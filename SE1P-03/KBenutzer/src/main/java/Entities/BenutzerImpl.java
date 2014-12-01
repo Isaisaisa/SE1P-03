@@ -10,6 +10,7 @@ import java.awt.*;
  */
 public class BenutzerImpl implements Benutzer{
     // declaration
+    private int id;
     private String name;
     private String vorname;
     private EmailTyp email;
@@ -19,6 +20,11 @@ public class BenutzerImpl implements Benutzer{
     private Image anzeigebild;
 
     // getter and setter
+
+    public int getId() {
+        return id;
+    }
+
     public String getName() {
         return name;
     }
@@ -77,7 +83,8 @@ public class BenutzerImpl implements Benutzer{
 
 
     //Constructor
-    private BenutzerImpl(String name, String vorname, EmailTyp email, String benutzername, PasswordType passwort, int berechtigung, Image anzeigebild) {
+    private BenutzerImpl(int id, String name, String vorname, EmailTyp email, String benutzername, PasswordType passwort, int berechtigung, Image anzeigebild) {
+        this.id = id;
         this.name = name;
         this.vorname = vorname;
         this.email = email;
@@ -87,8 +94,8 @@ public class BenutzerImpl implements Benutzer{
         this.anzeigebild = anzeigebild;
     }
 
-    public BenutzerImpl valueOf(String name, String vorname, EmailTyp email,String benutzername, PasswordType passwort, int berechtigung, Image anzeigebild){
-        return new BenutzerImpl(name, vorname, email, benutzername, passwort, berechtigung, anzeigebild);
+    public BenutzerImpl valueOf(int id, String name, String vorname, EmailTyp email,String benutzername, PasswordType passwort, int berechtigung, Image anzeigebild){
+        return new BenutzerImpl(id, name, vorname, email, benutzername, passwort, berechtigung, anzeigebild);
     }
 
 

@@ -1,5 +1,6 @@
 package Component;
 
+import Interface.KBenutzerService;
 import Interface.KForumService;
 import Interface.KModulService;
 import Services.PersistenceService;
@@ -7,12 +8,12 @@ import Services.PersistenceService;
 import javax.swing.text.Document;
 
 /**
- * Created by KamikazeOnRoad on 03.11.2014.
+ * Created by Louisa on 03.11.2014.
  */
 public class KForumServiceImpl implements KForumService {
 
 
-    public KForumServiceImpl(PersistenceService persistenceService, KModulService modul) {
+    public KForumServiceImpl(PersistenceService persistenceService, KBenutzerService benutzer, KModulService modul) {
     }
 
     @Override

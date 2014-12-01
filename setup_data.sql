@@ -65,11 +65,16 @@ CREATE TABLE frage (
      is_valid             CHAR(1)       NOT NULL,  --TODO: Constraint bzgl Einschränkung auf Y/N? + UMBENENNEN auf is_available
      --Fremdschluessel
      modul_id             INTEGER       NOT NULL,
+     uebung_id            INTEGER       NOT NULL,
      benutzer_create      INTEGER       NOT NULL,
      benutzer_deactivate  INTEGER,
      CONSTRAINT fk_modul_id
         FOREIGN KEY (modul_id)
         REFERENCES modul(modul_id)
+        ON DELETE CASCADE,
+     CONSTRAINT fk_uebung_id
+        FOREIGN KEY (uebung_id)
+        REFERENCES uebung(uebung_id)
         ON DELETE CASCADE,
      CONSTRAINT fk_benutzer_create 
         FOREIGN KEY (benutzer_create)
@@ -99,15 +104,10 @@ CREATE TABLE uebung (
     benoetigte_zeit INTEGER,
     --Fremdschlüssel
     benutzer_id     INTEGER NOT NULL,
-    frage_id        INTEGER NOT NULL,
     CONSTRAINT fk_benutzer_id
         FOREIGN KEY (benutzer_id)
         REFERENCES benutzer(benutzer_id)
-        ON DELETE CASCADE,
-    CONSTRAINT fk_frage_id 
-        FOREIGN KEY (frage_id)
-        REFERENCES frage(frage_id)
-        ON DELETE CASCADE    
+        ON DELETE CASCADE
 );
 
 -- Primary Key generieren

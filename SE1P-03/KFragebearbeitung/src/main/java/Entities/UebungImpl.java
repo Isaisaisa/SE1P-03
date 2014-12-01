@@ -12,12 +12,18 @@ import java.util.List;
  */
 public class UebungImpl implements Uebung{
 
+    private int id;
     private Date uebungsbeginn;
     private Date uebungsende;
     private ProcentType korrektheit;
     private List<Frage> fragen;
 
     // getter and setter
+
+    public int getId() {
+        return id;
+    }
+
     public Date getUebungsbeginn() {
         return uebungsbeginn;
     }
@@ -53,7 +59,8 @@ public class UebungImpl implements Uebung{
 
     }
 
-    private UebungImpl(Date uebungsbeginn, Date uebungsende, ProcentType korrektheit, List<Frage> fragen){
+    private UebungImpl(int id, Date uebungsbeginn, Date uebungsende, ProcentType korrektheit, List<Frage> fragen){
+        this.id = id;
         setUebungsbeginn(uebungsbeginn);
         setUebungsende(uebungsende);
         setKorrektheit(korrektheit);
@@ -64,8 +71,8 @@ public class UebungImpl implements Uebung{
         return new UebungImpl();
     }
 
-    public static UebungImpl valueOf(Date uebungsbeginn, Date uebungsende, ProcentType korrektheit, List<Frage> fragen){
-        return new UebungImpl(uebungsbeginn, uebungsende, korrektheit, fragen);
+    public static UebungImpl valueOf(int id, Date uebungsbeginn, Date uebungsende, ProcentType korrektheit, List<Frage> fragen){
+        return new UebungImpl(id, uebungsbeginn, uebungsende, korrektheit, fragen);
     }
 
 }

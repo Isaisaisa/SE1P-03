@@ -12,11 +12,6 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="ojdbc7" level="application" />
-    <orderEntry type="module" module-name="KModul" />
     <orderEntry type="module" module-name="KCommon" />
-    <orderEntry type="module" module-name="KFragestellung" />
-    <orderEntry type="module" module-name="KFragebearbeitung" />
-    <orderEntry type="module" module-name="KForum" />
   </component>
 </module>
-

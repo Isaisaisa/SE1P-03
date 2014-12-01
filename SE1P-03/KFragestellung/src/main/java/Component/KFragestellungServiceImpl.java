@@ -19,15 +19,12 @@ import java.util.List;
 import java.util.Vector;
 
 /**
- * Created by KamikazeOnRoad on 03.11.2014.
+ * Created by Louisa on 01.12.2014.
  */
 public class KFragestellungServiceImpl implements KFragestellungService {
 
-
-    public KFragestellungServiceImpl(PersistenceService persistenceService, KModulService modul) {
-
+    public KFragestellungServiceImpl(PersistenceService persistenceService) {
     }
-
 
     @Override
     public String getRichtigeAntwort(int frageNummer) {
