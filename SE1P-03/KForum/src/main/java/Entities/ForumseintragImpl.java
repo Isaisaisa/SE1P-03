@@ -1,12 +1,13 @@
 package Entities;
 
-import java.text.Normalizer;
+import Interface.Forumseintrag;
+
 import java.util.Date;
 
 /**
  * Created by KamikazeOnRoad on 03.11.2014.
  */
-public class Forumseintrag {
+public class ForumseintragImpl implements Forumseintrag{
     // Declaration
     private String frage;
     private Date zeitstempel;
@@ -29,17 +30,17 @@ public class Forumseintrag {
     }
 
     // Constructor
-    private  Forumseintrag(String frage) {
+    private ForumseintragImpl(String frage) {
         this(frage, new Date());
     }
 
-    private Forumseintrag(String frage, Date zeitstempel) {
+    private ForumseintragImpl(String frage, Date zeitstempel) {
         this.frage = frage;
         this.zeitstempel = zeitstempel;
     }
 
-    public Forumseintrag valueOf(String frage) { return new Forumseintrag(frage); }
-    public Forumseintrag valueOf(String frage, Date zeitstempel) {
-        return new Forumseintrag(frage, zeitstempel);
+    public ForumseintragImpl valueOf(String frage) { return new ForumseintragImpl(frage); }
+    public ForumseintragImpl valueOf(String frage, Date zeitstempel) {
+        return new ForumseintragImpl(frage, zeitstempel);
     }
 }

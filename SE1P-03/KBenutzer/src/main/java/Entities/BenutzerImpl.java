@@ -1,12 +1,14 @@
 package Entities;
 
 import Datatypes.*;
+import Interface.Benutzer;
+
 import java.awt.*;
 
 /**
  * Created by Louisa on 02.11.2014.
  */
-public class Benutzer {
+public class BenutzerImpl implements Benutzer{
     // declaration
     private String name;
     private String vorname;
@@ -75,7 +77,7 @@ public class Benutzer {
 
 
     //Constructor
-    private Benutzer(String name, String vorname, EmailTyp email,String benutzername, PasswordType passwort, int berechtigung, Image anzeigebild) {
+    private BenutzerImpl(String name, String vorname, EmailTyp email, String benutzername, PasswordType passwort, int berechtigung, Image anzeigebild) {
         this.name = name;
         this.vorname = vorname;
         this.email = email;
@@ -85,8 +87,8 @@ public class Benutzer {
         this.anzeigebild = anzeigebild;
     }
 
-    public Benutzer valueOf(String name, String vorname, EmailTyp email,String benutzername, PasswordType passwort, int berechtigung, Image anzeigebild){
-        return new Benutzer(name, vorname, email, benutzername, passwort, berechtigung, anzeigebild);
+    public BenutzerImpl valueOf(String name, String vorname, EmailTyp email,String benutzername, PasswordType passwort, int berechtigung, Image anzeigebild){
+        return new BenutzerImpl(name, vorname, email, benutzername, passwort, berechtigung, anzeigebild);
     }
 
 

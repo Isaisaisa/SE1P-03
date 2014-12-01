@@ -27,7 +27,7 @@ public class KFragestellungServiceImpl implements KFragestellungService {
     }
 
     @Override
-    public List<Frage> getRandomQuestion(Modul modul) {
+    public List<FrageImpl> getRandomQuestion(ModulImpl modul) {
         FrageRepository repo = new FrageRepositoryImpl();
         return repo.getRandomQuestion(modul);
     }

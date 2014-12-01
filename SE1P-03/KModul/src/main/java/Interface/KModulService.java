@@ -1,9 +1,6 @@
 package Interface;
 
 
-import Datatypes.EmailTyp;
-import Entities.Modul;
-
 import java.util.List;
 
 /**
@@ -18,5 +15,5 @@ public interface KModulService {
      * @return List<KModulService>
      * @pre valid email-adresse
      */
-    public List<IModul> getModule(int benutzerNummer);
+    public List<Modul> getModule(int benutzerNummer);
 }

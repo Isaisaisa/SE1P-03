@@ -8,7 +8,7 @@ import java.util.Date;
 /**
  * Created by Louisa on 02.11.2014.
  */
-public class Pruefung {
+public class PruefungImpl {
     private Date pruefungsbeginn;  //ehemals zeitstempel in UML
     private Date pruefungsende;
     private ProcentType korrektheit;
@@ -54,24 +54,24 @@ public class Pruefung {
 
 
     // Constructors
-    private Pruefung(LaengeDerPruefungTyp laengeDerPruefung){
+    private PruefungImpl(LaengeDerPruefungTyp laengeDerPruefung){
         setLaengeDerPruefung(laengeDerPruefung);
     }
 
-    private Pruefung(Date pruefungsbeginn, Date pruefungsende, ProcentType korrektheit, LaengeDerPruefungTyp laengeDerPruefung){
+    private PruefungImpl(Date pruefungsbeginn, Date pruefungsende, ProcentType korrektheit, LaengeDerPruefungTyp laengeDerPruefung){
         setPruefungsbeginn(pruefungsbeginn);
         setPruefungsende(pruefungsende);
         setKorrektheit(korrektheit);
         setLaengeDerPruefung(laengeDerPruefung);
     }
 
-    public static Pruefung valueOf(LaengeDerPruefungTyp laengeDerPruefung) {
-        return new Pruefung(laengeDerPruefung);
+    public static PruefungImpl valueOf(LaengeDerPruefungTyp laengeDerPruefung) {
+        return new PruefungImpl(laengeDerPruefung);
     }
 
-    public static Pruefung valueOf(Date pruefungsbeginn, Date pruefungsende, ProcentType korrektheit, LaengeDerPruefungTyp laengeDerPruefung) {
-        return new Pruefung(pruefungsbeginn, pruefungsende, korrektheit, laengeDerPruefung);
+    public static PruefungImpl valueOf(Date pruefungsbeginn, Date pruefungsende, ProcentType korrektheit, LaengeDerPruefungTyp laengeDerPruefung) {
+        return new PruefungImpl(pruefungsbeginn, pruefungsende, korrektheit, laengeDerPruefung);
     }
 
-    //TODO: IMPORTANT: while generating Pruefung/ Uebung we need to check if the questions are available!!!
+    //TODO: IMPORTANT: while generating PruefungImpl/ UebungImpl we need to check if the questions are available!!!
 }

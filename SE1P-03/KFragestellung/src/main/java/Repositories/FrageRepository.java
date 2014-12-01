@@ -1,7 +1,7 @@
 package Repositories;
 
-import Entities.Frage;
-import Entities.Modul;
+import Entities.FrageImpl;
+import Entities.ModulImpl;
 
 import java.util.List;
 
@@ -10,6 +10,6 @@ import java.util.List;
  */
 public interface FrageRepository {
 
-    public List<Frage> getRandomQuestion(Modul modul);
+    public List<FrageImpl> getRandomQuestion(ModulImpl modul);
 
 }

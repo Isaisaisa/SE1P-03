@@ -18,12 +18,12 @@ public interface KFragestellungService {
     public Document showCorrectAnswer(int frageNummer);
 
     /**
-     * Gets a number of random questions of the specified Modul
-     * @param modul (Modul)
+     * Gets a number of random questions of the specified ModulImpl
+     * @param modul (ModulImpl)
      * @return a list of questions
-     * @pre Modul exists
+     * @pre ModulImpl exists
      */
-    public List<Frage> getRandomQuestion(Modul modul);
+    public List<FrageImpl> getRandomQuestion(ModulImpl modul);
 
     /**
      * if answer is correct it returns true otherwise false

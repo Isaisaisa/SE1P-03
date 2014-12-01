@@ -1,15 +1,11 @@
 package Repositories;
 
 import Datatypes.Minutes;
-import Entities.Frage;
-import Entities.Fragenart;
-import Entities.Modul;
+import Entities.FrageImpl;
+import Entities.ModulImpl;
 import Services.PersistenceService;
 import Services.PersistenceServiceImpl;
 
-import javax.print.attribute.standard.DocumentName;
-import javax.swing.text.AbstractDocument;
-import javax.swing.text.Document;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,9 +16,9 @@ import java.util.Vector;
  */
 public class FrageRepositoryImpl implements FrageRepository{
 
-    public List<Frage> getRandomQuestion(Modul modul){
+    public List<FrageImpl> getRandomQuestion(ModulImpl modul){
 
-        List<Frage> result = new ArrayList<Frage>();
+        List<FrageImpl> result = new ArrayList<FrageImpl>();
         try {
             PersistenceService database = PersistenceServiceImpl.getInstance();
             ResultSet rSet = database.sendQuery("Select * from kunde LIMIT 10");
@@ -38,7 +34,7 @@ public class FrageRepositoryImpl implements FrageRepository{
                         String musterloesung = vec.get(0).get(i++);
                         int fragenart = Integer.parseInt(vec.get(0).get(i++));
 //TODO fragenart muss vom integer zu den Typ Fragenart umgewanderlt werden
-//                        Frage frage = Frage.valueOf(fragenummer, loesungszeit, fragestellung, musterloesung, fragenart);
+//                        FrageImpl frage = FrageImpl.valueOf(fragenummer, loesungszeit, fragestellung, musterloesung, fragenart);
 //                        result.add(frage);
                     }
             }

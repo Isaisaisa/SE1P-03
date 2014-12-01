@@ -1,11 +1,11 @@
 package Entities;
 
-import Interface.IModul;
+import Interface.Modul;
 
 /**
  * Created by KamikazeOnRoad on 03.11.2014.
  */
-public class Modul implements IModul {
+public class ModulImpl implements Modul {
     // Declaration
     private String name;
     private String department;
@@ -28,12 +28,12 @@ public class Modul implements IModul {
     }
 
     // Constructor
-    private Modul(String name, String department) {
+    private ModulImpl(String name, String department) {
         this.name = name;
         this.department = department;
     }
 
-    public Modul valueOf(String name, String department) {
-        return new Modul(name, department);
+    public ModulImpl valueOf(String name, String department) {
+        return new ModulImpl(name, department);
     }
 }

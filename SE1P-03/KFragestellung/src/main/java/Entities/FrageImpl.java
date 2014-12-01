@@ -2,10 +2,9 @@ package Entities;
 
 
 import Datatypes.Minutes;
-import javax.swing.text.Document;
 
 
-public class Frage {
+public class FrageImpl {
 
     //Attrubutes
     private Fragenart fragenart;
@@ -54,7 +53,7 @@ public class Frage {
     }
 
     //Constructor
-    public Frage(int frageNummer, Minutes loesungszeit, String fragestellung, String musterloesung, Fragenart fragenart) {
+    public FrageImpl(int frageNummer, Minutes loesungszeit, String fragestellung, String musterloesung, Fragenart fragenart) {
         this.frageNummer = frageNummer;
         this.loesungszeit = loesungszeit;
         this.fragestellung = fragestellung;
@@ -64,8 +63,8 @@ public class Frage {
     }
 
     //TODO: Fragenummer darf nicht von jedem änderbar sein... sollte automatisch generieren ~> via DB geregelt später?
-    public static Frage valueOf(int frageNummer, Minutes loesungszeit, String fragestellung, String musterloesung, Fragenart fragenart){
-        return new Frage(frageNummer, loesungszeit, fragestellung, musterloesung, fragenart);
+    public static FrageImpl valueOf(int frageNummer, Minutes loesungszeit, String fragestellung, String musterloesung, Fragenart fragenart){
+        return new FrageImpl(frageNummer, loesungszeit, fragestellung, musterloesung, fragenart);
     }
 
 }
