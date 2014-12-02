@@ -13,7 +13,7 @@ CREATE TABLE modul (
 );
 
 -- Primary Key generieren
-CREATE SEQUENCE modul_seq;
+--CREATE SEQUENCE modul_seq;
 CREATE OR REPLACE TRIGGER modul_increment BEFORE INSERT ON modul FOR EACH ROW
 BEGIN
   SELECT modul_seq.NEXTVAL
@@ -38,7 +38,7 @@ CREATE TABLE benutzer (
 );
 
 -- Primary Key generieren
-CREATE SEQUENCE benutzer_seq;
+--CREATE SEQUENCE benutzer_seq;
 CREATE OR REPLACE TRIGGER benutzer_increment BEFORE INSERT ON benutzer FOR EACH ROW
 BEGIN
   SELECT benutzer_seq.NEXTVAL
@@ -85,11 +85,11 @@ CREATE TABLE frage (
         REFERENCES benutzer(benutzer_id)
         ON DELETE CASCADE,
      CONSTRAINT check_is_available
-        CHECK (is_available IN ('Y', 'N'))
+        CHECK (is_available='Y' OR is_available='N')
 );
 
 -- Primary Key generieren
-CREATE SEQUENCE frage_seq;
+--CREATE SEQUENCE frage_seq;
 CREATE OR REPLACE TRIGGER frage_increment BEFORE INSERT ON frage FOR EACH ROW
 BEGIN
   SELECT frage_seq.NEXTVAL
@@ -113,7 +113,7 @@ CREATE TABLE uebung (
 );
 
 -- Primary Key generieren
-CREATE SEQUENCE uebung_seq;
+--CREATE SEQUENCE uebung_seq;
 CREATE OR REPLACE TRIGGER uebung_increment BEFORE INSERT ON uebung FOR EACH ROW
 BEGIN
   SELECT uebung_seq.NEXTVAL
