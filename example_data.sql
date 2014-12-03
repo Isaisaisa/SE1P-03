@@ -19,24 +19,24 @@ INSERT INTO BENUTZER (VORNAME, NACHNAME, BENUTZERNAME, EMAIL, PASSWORT)
   
 
 --Bsp.Daten Module, für die sich Benutzer interessiert  
-INSERT INTO BENUTZER_MODUL (BENUTZER_ID, MODUL_ID) VALUES (24, 46);
-INSERT INTO BENUTZER_MODUL (BENUTZER_ID, MODUL_ID) VALUES (24, 48);
-INSERT INTO BENUTZER_MODUL (BENUTZER_ID, MODUL_ID) VALUES (24, 50);
+INSERT INTO BENUTZER_MODUL (BENUTZER_ID, MODUL_ID) VALUES (41, 61);
+INSERT INTO BENUTZER_MODUL (BENUTZER_ID, MODUL_ID) VALUES (41, 63);
+INSERT INTO BENUTZER_MODUL (BENUTZER_ID, MODUL_ID) VALUES (41, 65);
 
-INSERT INTO BENUTZER_MODUL (BENUTZER_ID, MODUL_ID) VALUES (25, 46);
-INSERT INTO BENUTZER_MODUL (BENUTZER_ID, MODUL_ID) VALUES (25, 47);
-INSERT INTO BENUTZER_MODUL (BENUTZER_ID, MODUL_ID) VALUES (25, 48);
-INSERT INTO BENUTZER_MODUL (BENUTZER_ID, MODUL_ID) VALUES (25, 50);
+INSERT INTO BENUTZER_MODUL (BENUTZER_ID, MODUL_ID) VALUES (42, 61);
+INSERT INTO BENUTZER_MODUL (BENUTZER_ID, MODUL_ID) VALUES (42, 62);
+INSERT INTO BENUTZER_MODUL (BENUTZER_ID, MODUL_ID) VALUES (42, 63);
+INSERT INTO BENUTZER_MODUL (BENUTZER_ID, MODUL_ID) VALUES (42, 65);
 
-INSERT INTO BENUTZER_MODUL (BENUTZER_ID, MODUL_ID) VALUES (26, 49);
+INSERT INTO BENUTZER_MODUL (BENUTZER_ID, MODUL_ID) VALUES (43, 64);
 
 
 --Bsp.Daten Fragen
-INSERT INTO FRAGE (FRAGE_NR, LOESUNGSZEIT, FRAGESTELLUNG, MUSTERLOESUNG, FRAGENART, IS_VALID, MODUL_ID, BENUTZER_CREATE)
+INSERT INTO FRAGE (FRAGE_NR, LOESUNGSZEIT, FRAGESTELLUNG, MUSTERLOESUNG, FRAGENART, IS_AVAILABLE, MODUL_ID, BENUTZER_CREATE)
   VALUES (1, 15, 'Geben Sie ein Beispiel für eine User Story in einem Lernprogramm.', 
-    'Ich, als Student, logge mich ein.', 3, 'Y', 46, 25);
+    'Ich, als Student, logge mich ein.', 3, 'Y', 61, 42);
     
-INSERT INTO FRAGE (FRAGE_NR, LOESUNGSZEIT, FRAGESTELLUNG, MUSTERLOESUNG, FRAGENART, IS_VALID, MODUL_ID, BENUTZER_CREATE)
+INSERT INTO FRAGE (FRAGE_NR, LOESUNGSZEIT, FRAGESTELLUNG, MUSTERLOESUNG, FRAGENART, IS_AVAILABLE, MODUL_ID, BENUTZER_CREATE)
   VALUES (2, 30, 'Schreiben Sie in Pseudo-Code den Dijkstra-Algorithmus auf.', 
     'Funktion Dijkstra(Graph, Startknoten):
     initialisiere(Graph,Startknoten,abstand[],vorgänger[],Q)
@@ -67,13 +67,13 @@ Funktion erstelleKürzestenPfad(Zielknoten,vorgänger[])
    	solange vorgänger[u] nicht null:   // Der Vorgänger des Startknotens ist null
        u := vorgänger[u]
        füge u am Anfang von Weg[] ein
-	return Weg[]', 3, 'Y', 48, 25);
+	return Weg[]', 3, 'Y', 63, 42);
   
-INSERT INTO FRAGE (FRAGE_NR, LOESUNGSZEIT, FRAGESTELLUNG, MUSTERLOESUNG, FRAGENART, IS_VALID, MODUL_ID, BENUTZER_CREATE)
+INSERT INTO FRAGE (FRAGE_NR, LOESUNGSZEIT, FRAGESTELLUNG, MUSTERLOESUNG, FRAGENART, IS_AVAILABLE, MODUL_ID, BENUTZER_CREATE)
   VALUES (3, 30, 'Nennen Sie 5 Schritte der Software-Entwicklung.', 
-    'Analyse, Spezifikation, Entwurf, Implementierung, Test', 3, 'Y', 46, 24);
+    'Analyse, Spezifikation, Entwurf, Implementierung, Test', 3, 'Y', 61, 41);
     
-INSERT INTO FRAGE (FRAGE_NR, LOESUNGSZEIT, FRAGESTELLUNG, MUSTERLOESUNG, FRAGENART, IS_VALID, MODUL_ID, BENUTZER_CREATE)
+INSERT INTO FRAGE (FRAGE_NR, LOESUNGSZEIT, FRAGESTELLUNG, MUSTERLOESUNG, FRAGENART, IS_AVAILABLE, MODUL_ID, BENUTZER_CREATE)
   VALUES (4, 15, 'Nennen Sie ein Basis-Merkmal und ein Leistungs-Merkmal für ein Smartphone.', 
     'Beispiele Basis-Merkmal: Man kann damit telefonieren, es hat einen Touch-Screen, es ist Internet-fähig.
-    Beispiele Leistungs-Merkmal: LTE-fähig, besonders lange Akkulaufzeit, Verarbeitung von Aluminium statt Plastik.', 3, 'Y', 46, 25);
+    Beispiele Leistungs-Merkmal: LTE-fähig, besonders lange Akkulaufzeit, Verarbeitung von Aluminium statt Plastik.', 3, 'Y', 61, 42);

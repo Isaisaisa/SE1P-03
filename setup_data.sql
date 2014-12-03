@@ -1,4 +1,5 @@
 /* SE1P 2014*/
+DROP TABLE frage_uebung;
 DROP TABLE uebung;
 DROP TABLE frage;
 DROP TABLE benutzer_modul;
@@ -65,16 +66,11 @@ CREATE TABLE frage (
      is_available         CHAR(1)       NOT NULL,  
      --Fremdschluessel
      modul_id             INTEGER       NOT NULL,
-     uebung_id            INTEGER       NOT NULL,
      benutzer_create      INTEGER       NOT NULL,
      benutzer_deactivate  INTEGER,
      CONSTRAINT fk_modul_id
         FOREIGN KEY (modul_id)
         REFERENCES modul(modul_id)
-        ON DELETE CASCADE,
-     CONSTRAINT fk_uebung_id
-        FOREIGN KEY (uebung_id)
-        REFERENCES uebung(uebung_id)
         ON DELETE CASCADE,
      CONSTRAINT fk_benutzer_create 
         FOREIGN KEY (benutzer_create)
@@ -98,7 +94,7 @@ BEGIN
 END;    
 /
 
-   
+   --TODO: was war jetzt mit richtige Antwort eintragen? Doch nicht?
 CREATE TABLE uebung (
     uebung_id       INTEGER PRIMARY KEY,
     zeitpunkt       DATE    NOT NULL,
@@ -135,5 +131,21 @@ CREATE TABLE benutzer_modul (
     CONSTRAINT fk_modulB_id 
         FOREIGN KEY (modul_id)
         REFERENCES modul(modul_id)
+        ON DELETE CASCADE    
+);
+
+
+-- lists all fragen a uebung consists of
+CREATE TABLE frage_uebung (
+    frage_id    INTEGER NOT NULL,
+    uebung_id   INTEGER NOT NULL,
+    UNIQUE (frage_id, uebung_id),
+    CONSTRAINT fk_frageU_id
+        FOREIGN KEY (frage_id)
+        REFERENCES frage(frage_id)
+        ON DELETE CASCADE,
+    CONSTRAINT fk_uebungF_id 
+        FOREIGN KEY (uebung_id)
+        REFERENCES uebung(uebung_id)
         ON DELETE CASCADE    
 );
